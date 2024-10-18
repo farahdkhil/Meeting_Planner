@@ -1,0 +1,100 @@
+<ExtendsNode: extends "base.html">
+{% block title %}New Meeting{% endblock %}
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 20px;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    table {
+        width: 100%; /* Prend toute la largeur disponible */
+        margin-top: 20px; /* Espace au-dessus du tableau */
+        border-collapse: collapse; /* Supprime l'espace entre les bordures des cellules */
+    }
+
+    td {
+        padding: 10px; /* Espacement interne pour les cellules */
+        border: 1px solid #ddd; /* Bordure des cellules */
+    }
+
+    .error-message {
+        color: red; /* Couleur pour les messages d'erreur */
+        font-size: 0.9em; /* Taille de police légèrement plus petite */
+    }
+
+    button {
+        background-color: #28a745; /* Couleur du bouton */
+        color: white; /* Couleur du texte */
+        border: none; /* Supprime les bordures */
+        padding: 10px 20px; /* Espacement interne */
+        border-radius: 5px; /* Coins arrondis */
+        cursor: pointer; /* Changer le curseur */
+        margin-top: 20px; /* Espace au-dessus du bouton */
+    }
+
+    button:hover {
+        background-color: #218838; /* Couleur du bouton au survol */
+    }
+</style>
+
+<h1>Plan a new meeting</h1>
+<form method="post">
+    {% csrf_token %}
+    <table>
+        {% for field in form %}
+            <tr>
+                <td>
+                    {{ field.label_tag }}
+                    {{ field }}
+                </td>
+                <td>
+                    {% for error in field.errors %}
+                        <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <button type="submit">Create</button>
+</form>
+{% endblock %}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Meeting</title>
+</head>
+<body>
+    <h2>Add a New Meeting</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+        
+        <label for="date">Date:</label><br>
+        <input type="date" id="date" name="date" required><br><br>
+        
+        <label for="start_time">Start Time:</label><br>
+        <input type="time" id="start_time" name="start_time" required><br><br>
+        
+        <label for="duration">Duration (hours):</label><br>
+        <input type="number" id="duration" name="duration" required><br><br>
+
+        <label for="room">Room:</label><br>
+        <select id="room" name="room" required>
+            {% for room in rooms %}
+                <option value="{{ room.id }}">{{ room.name }} - Room {{ room.room_number }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <input type="submit" value="Add Meeting">
+    </form>
+</body>
+</html> -->

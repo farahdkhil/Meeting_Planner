@@ -1,0 +1,60 @@
+<ExtendsNode: extends "base.html">
+{% load static %}
+
+{% block title %}Détails de la Réunion{% endblock %}
+
+{% block content %}
+<h2>Détails de la Réunion</h2>
+<style>
+    /* Ajoutez votre CSS ici */
+    h2 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    .meeting-details {
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        margin-bottom: 20px;
+    }
+    .meeting-details p {
+        margin: 5px 0;
+    }
+    .meeting-actions {
+        margin-top: 20px;
+    }
+    .btn {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #fff;
+    }
+    .btn-primary {
+        background-color: #007bff;
+    }
+    .btn-danger {
+        background-color: #dc3545;
+    }
+    .btn-secondary {
+        background-color: #6c757d;
+    }
+</style>
+<!-- Corrigez le chemin vers le fichier CSS -->
+
+<div class="meeting-details">
+    <p><strong>Titre :</strong> {{ meeting.title }}</p>
+    <p><strong>Date :</strong> {{ meeting.date|date:"d M Y" }}</p>
+    <p><strong>Heure de début :</strong> {{ meeting.start_time|time:"H:i" }}</p>
+    <p><strong>Durée :</strong> {{ meeting.duration }} heures</p>
+    <p><strong>Salle :</strong> {{ meeting.room.name }}</p>  <!-- Supposant que 'room' a un champ 'name' -->
+</div>
+
+<div class="meeting-actions">
+    <a href="{% url 'update' meeting.id %}" class="btn btn-primary">Modifier</a>
+    <a href="{% url 'delete' meeting.id %}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette réunion ?');">Supprimer</a>
+    <a href="{% url 'meetings_list_view' %}" class="btn btn-secondary">Retour à la liste des réunions</a>
+</div>
+{% endblock %}

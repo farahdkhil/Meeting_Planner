@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meetings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none; /* Supprimer les puces de la liste */
+            padding: 0;
+        }
+
+        li {
+            background: #fff; /* Fond blanc pour chaque élément */
+            margin: 10px 0; /* Espacement entre les éléments */
+            padding: 10px; /* Espacement interne */
+            border-radius: 5px; /* Coins arrondis */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre pour un effet de profondeur */
+        }
+
+        a {
+            text-decoration: none; /* Supprimer le soulignement des liens */
+            color: #007BFF; /* Couleur du lien */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Souligner le lien au survol */
+        }
+
+        button {
+            background-color: #28a745; /* Couleur du bouton */
+            color: white; /* Couleur du texte */
+            border: none; /* Supprimer les bordures */
+            padding: 10px 20px; /* Espacement interne */
+            border-radius: 5px; /* Coins arrondis */
+            cursor: pointer; /* Changer le curseur */
+        }
+
+        button:hover {
+            background-color: #218838; /* Couleur du bouton au survol */
+        }
+    </style>
+</head>
+<body>
+    <h2>Meetings</h2>
+
+    <ul>
+        {% for meeting in meetings %}
+        <li>
+            <a href="{% url 'detail' meeting.id %}">
+                 {{ meeting.title }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Button to navigate to the Add Meeting page -->
+    <a href="{% url 'add' %}">
+        <button type="button">Add New Meeting</button>
+    </a>
+</body>
+</html>
