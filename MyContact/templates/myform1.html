@@ -1,0 +1,27 @@
+<form action="{% url 'contact' %}" method="post">
+    {% csrf_token %}
+    
+    <p>
+        <label for="firstname">Firstname:</label>
+        <input type="text" name="firstname" id="firstname" required>
+    </p>
+
+    <p>
+        <label for="lastname">Lastname:</label>
+        <input type="text" name="lastname" id="lastname" required>
+    </p>
+
+    <p>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+    </p>
+
+    <p>
+        <label for="message">Message:</label>
+        <textarea name="message" id="message" required></textarea>
+    </p>
+
+    <p>
+        <input type="submit" value="Envoyer">
+    </p>
+</form>

@@ -1,5 +1,6 @@
 
 from django.urls import path
+from MyContact import views
 from meetings.views import delete, detail, meetings_list_view,add,update
 
 urlpatterns = [

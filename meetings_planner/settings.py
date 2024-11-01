@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'website',#new
     'meetings',#new
+    'MyContact'#new
 ]
 
 MIDDLEWARE = [
